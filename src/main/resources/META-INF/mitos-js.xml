@@ -1,0 +1,7 @@
+<idea-plugin>
+    <!--
+      Loaded only when the JavaScript bundled plugin is present.
+      The JS analyzer is registered programmatically by CallGraphService
+      once the JS PSI classes are confirmed available.
+    -->
+</idea-plugin>

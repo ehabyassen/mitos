@@ -165,11 +165,61 @@ internal class GraphPanel(private val project: Project, parentDisposable: Dispos
         }
     }
 
+    /**
+     * Builds a self-contained HTML page by inlining mitos.css and every
+     * bundled JS into the index template. JBCefBrowser.loadHTML provides no
+     * base URL, so relative <script src> / <link href> tags can't resolve
+     * back into the plugin JAR — inlining is the simplest reliable path.
+     */
     private fun loadIndex(): String {
-        val stream = javaClass.classLoader.getResourceAsStream("web/index.html")
-            ?: error("Mitos: web/index.html missing from plugin JAR")
-        return stream.bufferedReader().readText()
+        val cssPath = "web/mitos.css"
+        val css = readResource(cssPath) ?: ""
+        val libOrder = listOf(
+            "web/lib/cytoscape.min.js",
+            "web/lib/dagre.min.js",
+            "web/lib/cytoscape-dagre.js",
+            "web/lib/cytoscape-cose-bilkent.js",
+            "web/lib/popper.min.js",
+            "web/lib/cytoscape-popper.js",
+            "web/lib/cytoscape-svg.js",
+        )
+        val libs = libOrder.joinToString("\n") { path ->
+            val body = readResource(path)
+            if (body == null) "<!-- missing $path -->" else "<script>\n$body\n</script>"
+        }
+        val app = readResource("web/mitos.js") ?: ""
+        return """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Mitos</title>
+<style>
+$css
+</style>
+</head>
+<body>
+<div id="app">
+    <div id="legend" class="overlay collapsed">
+        <button class="legend-toggle" aria-label="Toggle legend">Legend ▾</button>
+        <div class="legend-body" id="legend-body"></div>
+    </div>
+    <div id="banner" class="overlay banner hidden"></div>
+    <div id="empty-state" class="overlay center hidden"></div>
+    <div id="cy"></div>
+    <div id="minimap" class="overlay"></div>
+</div>
+$libs
+<script>
+$app
+</script>
+</body>
+</html>
+""".trimIndent()
     }
+
+    private fun readResource(path: String): String? =
+        javaClass.classLoader.getResourceAsStream(path)?.bufferedReader()?.use { it.readText() }
 
     override fun dispose() {
         navigateQuery?.let { Disposer.dispose(it) }

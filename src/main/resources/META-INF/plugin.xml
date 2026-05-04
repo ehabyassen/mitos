@@ -16,33 +16,40 @@
             Resolves references across:
         </p>
         <ul>
-            <li>JSP &harr; Java (taglibs, EL, scriptlets, Spring views)</li>
+            <li>JSP &harr; Java (taglibs, EL, scriptlets, Spring views) <em>— requires Ultimate</em></li>
             <li>Java &harr; Java (PSI references)</li>
-            <li>JSP &harr; JSP (includes)</li>
-            <li>JSP &harr; JS (script src, inline handlers)</li>
-            <li>JS &rarr; Java (best-effort AJAX URL match)</li>
+            <li>JSP &harr; JSP (includes) <em>— requires Ultimate</em></li>
+            <li>JSP &harr; JS (script src, inline handlers) <em>— requires Ultimate</em></li>
+            <li>JS &rarr; Java (best-effort AJAX URL match) <em>— requires JS plugin</em></li>
         </ul>
-        <p>Requires IntelliJ IDEA <b>Ultimate</b>.</p>
+        <p>
+            Java-to-Java analysis works on any IntelliJ-family IDE.
+            JSP/JavaScript/Spring features activate when those bundled
+            plugins are present (typically IntelliJ IDEA Ultimate).
+        </p>
     ]]></description>
 
     <change-notes><![CDATA[
         <h3>1.0.0</h3>
         <ul>
             <li>Initial release.</li>
-            <li>Java, JSP, JavaScript analyzers.</li>
-            <li>Cross-language resolver (taglibs, EL, scriptlets, Spring views, AJAX).</li>
+            <li>Java analyzer (always on).</li>
+            <li>Optional JSP, JavaScript, and Spring analyzers — load when those bundled plugins are available.</li>
             <li>Cytoscape.js renderer with shape-per-kind nodes, language palette, drag, mini-map, legend, search, four layouts, theme reactivity.</li>
         </ul>
     ]]></change-notes>
 
+    <!-- Hard dependencies: only the always-bundled core modules. -->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.java</depends>
-    <depends>JavaScript</depends>
-    <depends>com.intellij.javaee</depends>
-    <depends>com.intellij.javaee.web</depends>
+
+    <!-- Optional Ultimate-only modules. The config-files are loaded only when
+         the corresponding bundled plugin is present, so installation does not
+         require an active Ultimate subscription. -->
+    <depends optional="true" config-file="mitos-jsp.xml">com.intellij.javaee.web</depends>
+    <depends optional="true" config-file="mitos-js.xml">JavaScript</depends>
     <depends optional="true" config-file="mitos-spring.xml">com.intellij.spring</depends>
-    <depends optional="true" config-file="mitos-spring.xml">com.intellij.spring.mvc</depends>
 
     <resource-bundle>messages.MitosBundle</resource-bundle>
 

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <!-- Dark-theme variant: brighter strokes, lifted node tops to stay legible
+       on the dark settings panel background. -->
+  <defs>
+    <radialGradient id="rootGlowDark" cx="50%" cy="50%" r="55%">
+      <stop offset="0%"  stop-color="#B7DD8A"/>
+      <stop offset="100%" stop-color="#9CCC65"/>
+    </radialGradient>
+    <linearGradient id="javaGradDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#FFC880"/>
+      <stop offset="100%" stop-color="#FFB454"/>
+    </linearGradient>
+    <linearGradient id="jspGradDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#90CAF9"/>
+      <stop offset="100%" stop-color="#64B5F6"/>
+    </linearGradient>
+    <linearGradient id="jsGradDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#FFF59D"/>
+      <stop offset="100%" stop-color="#FFEE58"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M8 11 Q20 6 32 11 Q35 20 32 29 Q20 34 8 29 Q5 20 8 11 Z"
+        fill="none" stroke="#BBBBBB" stroke-width="0.7"
+        stroke-dasharray="2,2" opacity="0.55"/>
+
+  <g stroke="#C8C8C8" stroke-width="1.2" stroke-linecap="round" opacity="0.9">
+    <line x1="11" y1="12" x2="20" y2="20"/>
+    <line x1="29" y1="12" x2="20" y2="20"/>
+    <line x1="11" y1="28" x2="20" y2="20"/>
+    <line x1="29" y1="28" x2="20" y2="20"/>
+  </g>
+
+  <circle cx="11" cy="12" r="3.6" fill="url(#javaGradDark)" stroke="#FF8A1A" stroke-width="0.6"/>
+  <circle cx="29" cy="12" r="3.6" fill="url(#jspGradDark)"  stroke="#1565C0" stroke-width="0.6"/>
+  <circle cx="11" cy="28" r="3.6" fill="url(#jsGradDark)"   stroke="#F7DF1E" stroke-width="0.6"/>
+  <circle cx="29" cy="28" r="3.6" fill="url(#jsGradDark)"   stroke="#F7DF1E" stroke-width="0.6"/>
+
+  <circle cx="20" cy="20" r="7" fill="none" stroke="#9CCC65" stroke-width="0.6" opacity="0.4"/>
+  <circle cx="20" cy="20" r="5.4" fill="url(#rootGlowDark)" stroke="#6DB33F" stroke-width="0.9"/>
+  <circle cx="18.2" cy="18.2" r="1.4" fill="#FFFFFF" opacity="0.6"/>
+</svg>

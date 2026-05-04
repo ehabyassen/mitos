@@ -1,0 +1,8 @@
+<idea-plugin>
+    <!--
+      Loaded only when the JSP / JavaEE-Web bundled plugin is present
+      (i.e. on IntelliJ IDEA Ultimate with an active subscription).
+      The JSP analyzer itself is registered programmatically by
+      CallGraphService once the JSP PSI classes are confirmed available.
+    -->
+</idea-plugin>
