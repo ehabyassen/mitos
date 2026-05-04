@@ -1,0 +1,92 @@
+<idea-plugin>
+    <id>com.vodafone.mitos</id>
+    <name>Mitos</name>
+    <vendor>Vodafone</vendor>
+    <category>Code tools</category>
+
+    <description><![CDATA[
+        <h2>Mitos — Ariadne's thread through the Labyrinth</h2>
+        <p>
+            A bidirectional cross-language call-graph visualizer for Java, JSP, and JavaScript.
+            Place the caret on a method, JSP page, or JS function and press
+            <code>Ctrl+Alt+Shift+G</code> to see callers above and callees below in a
+            colourful, draggable graph.
+        </p>
+        <p>
+            Resolves references across:
+        </p>
+        <ul>
+            <li>JSP &harr; Java (taglibs, EL, scriptlets, Spring views)</li>
+            <li>Java &harr; Java (PSI references)</li>
+            <li>JSP &harr; JSP (includes)</li>
+            <li>JSP &harr; JS (script src, inline handlers)</li>
+            <li>JS &rarr; Java (best-effort AJAX URL match)</li>
+        </ul>
+        <p>Requires IntelliJ IDEA <b>Ultimate</b>.</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>1.0.0</h3>
+        <ul>
+            <li>Initial release.</li>
+            <li>Java, JSP, JavaScript analyzers.</li>
+            <li>Cross-language resolver (taglibs, EL, scriptlets, Spring views, AJAX).</li>
+            <li>Cytoscape.js renderer with shape-per-kind nodes, language palette, drag, mini-map, legend, search, four layouts, theme reactivity.</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.java</depends>
+    <depends>JavaScript</depends>
+    <depends>com.intellij.javaee</depends>
+    <depends>com.intellij.javaee.web</depends>
+    <depends optional="true" config-file="mitos-spring.xml">com.intellij.spring</depends>
+    <depends optional="true" config-file="mitos-spring.xml">com.intellij.spring.mvc</depends>
+
+    <resource-bundle>messages.MitosBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+            id="Mitos"
+            anchor="right"
+            icon="com.vodafone.mitos.MitosIcons.ToolWindow"
+            factoryClass="com.vodafone.mitos.ui.MitosToolWindowFactory"/>
+
+        <projectService serviceImplementation="com.vodafone.mitos.service.CallGraphService"/>
+        <projectService serviceImplementation="com.vodafone.mitos.settings.MitosSettings"/>
+
+        <projectConfigurable
+            parentId="tools"
+            id="com.vodafone.mitos.settings.MitosConfigurable"
+            instance="com.vodafone.mitos.settings.MitosConfigurable"
+            displayName="Mitos"
+            bundle="messages.MitosBundle"
+            key="settings.display.name"/>
+
+        <notificationGroup
+            id="Mitos.Notifications"
+            displayType="BALLOON"
+            bundle="messages.MitosBundle"
+            key="notifications.group.name"/>
+    </extensions>
+
+    <projectListeners>
+        <listener
+            class="com.vodafone.mitos.service.PsiInvalidationListener"
+            topic="com.intellij.psi.PsiTreeChangeListener"/>
+    </projectListeners>
+
+    <actions>
+        <action
+            id="Mitos.ShowCallGraph"
+            class="com.vodafone.mitos.action.ShowCallGraphAction"
+            text="Mitos: Show Call Graph"
+            description="Visualise the bidirectional cross-language call graph for the symbol under the caret">
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt shift G"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="GoToMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

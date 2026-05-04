@@ -1,0 +1,10 @@
+<ivy-module version="2.0">
+  <info organisation="bundledModule" module="intellij.platform.clouds" revision="242.24807.4+707"/>
+  <configurations>
+    <conf name="default" visibility="public"/>
+  </configurations>
+  <publications>
+    <artifact name="/home/danenja/.gradle/caches/8.10.2/transforms/297f4df563b9480b01500fe8dd00f422/transformed/ideaIU-2024.2.5/lib/modules/intellij.platform.clouds.jar" type="jar" conf="default"/>
+  </publications>
+  <dependencies/>
+</ivy-module>

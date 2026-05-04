@@ -1,0 +1,26 @@
+<ivy-module version="2.0">
+  <info organisation="bundledPlugin" module="JavaScript" revision="242.24807.4+744"/>
+  <configurations>
+    <conf name="default" visibility="public"/>
+  </configurations>
+  <publications>
+    <artifact name="/home/danenja/.gradle/caches/8.10.2/transforms/297f4df563b9480b01500fe8dd00f422/transformed/ideaIU-2024.2.5/plugins/javascript-plugin" type="directory" conf="default"/>
+  </publications>
+  <dependencies>
+    <dependency org="bundledPlugin" name="com.intellij.completion.ml.ranking" rev="242.24807.4+560"/>
+    <dependency org="bundledPlugin" name="com.jetbrains.performancePlugin" rev="242.24807.4+787"/>
+    <dependency org="bundledPlugin" name="org.intellij.intelliLang" rev="242.24807.4+558"/>
+    <dependency org="bundledPlugin" name="com.intellij.copyright" rev="242.24807.4+444"/>
+    <dependency org="bundledPlugin" name="org.jetbrains.plugins.terminal" rev="242.24807.4+543"/>
+    <dependency org="bundledPlugin" name="tanvd.grazi" rev="242.24807.4+893"/>
+    <dependency org="bundledPlugin" name="org.intellij.plugins.markdown" rev="242.24807.4+306"/>
+    <dependency org="bundledPlugin" name="training" rev="242.24807.4+443"/>
+    <dependency org="bundledPlugin" name="Git4Idea" rev="242.24807.4+536"/>
+    <dependency org="bundledPlugin" name="com.intellij.css" rev="242.24807.4+877"/>
+    <dependency org="bundledPlugin" name="com.intellij.diagram" rev="242.24807.4+799"/>
+    <dependency org="bundledPlugin" name="intellij.indexing.shared.core" rev="242.24807.4+97"/>
+    <dependency org="bundledPlugin" name="com.jetbrains.sh" rev="242.24807.4+328"/>
+    <dependency org="bundledPlugin" name="JavaScriptDebugger" rev="242.24807.4+582"/>
+    <dependency org="bundledModule" name="intellij.indexing.shared.generator" rev="242.24807.4+707"/>
+  </dependencies>
+</ivy-module>

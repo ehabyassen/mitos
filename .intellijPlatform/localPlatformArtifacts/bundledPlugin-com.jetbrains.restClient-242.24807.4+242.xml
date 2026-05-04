@@ -1,0 +1,17 @@
+<ivy-module version="2.0">
+  <info organisation="bundledPlugin" module="com.jetbrains.restClient" revision="242.24807.4+242"/>
+  <configurations>
+    <conf name="default" visibility="public"/>
+  </configurations>
+  <publications>
+    <artifact name="/home/danenja/.gradle/caches/8.10.2/transforms/297f4df563b9480b01500fe8dd00f422/transformed/ideaIU-2024.2.5/plugins/restClient" type="directory" conf="default"/>
+  </publications>
+  <dependencies>
+    <dependency org="bundledPlugin" name="com.intellij.platform.images" rev="242.24807.4+505"/>
+    <dependency org="bundledPlugin" name="org.intellij.intelliLang" rev="242.24807.4+558"/>
+    <dependency org="bundledPlugin" name="com.intellij.jsonpath" rev="242.24807.4+280"/>
+    <dependency org="bundledPlugin" name="com.intellij.microservices.ui" rev="242.24807.4+562"/>
+    <dependency org="bundledPlugin" name="XPathView" rev="242.24807.4+130"/>
+    <dependency org="bundledModule" name="intellij.libraries.ktor.client" rev="242.24807.4+707"/>
+  </dependencies>
+</ivy-module>

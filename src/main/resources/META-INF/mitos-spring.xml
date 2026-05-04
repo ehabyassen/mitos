@@ -1,0 +1,9 @@
+<idea-plugin>
+    <!--
+      Optional dependency hook: loaded only when Spring / Spring-MVC plugins are
+      installed. The Spring-aware code paths in CrossLanguageResolver detect
+      annotations through PSI on the classpath (`PsiAnnotation`), which works
+      whether or not the Spring plugin is loaded — so this file is intentionally
+      empty. It exists so IntelliJ wires the optional <depends> entries cleanly.
+    -->
+</idea-plugin>
